@@ -27,6 +27,18 @@ public class ExameDao extends Dao {
 		}
 	}
 	
+	public void excluirExame(String rowid) {
+	    String query = "DELETE FROM exame WHERE rowid = ?";
+	    try (Connection con = getConexao();
+	         PreparedStatement ps = con.prepareStatement(query)) {
+	        
+	        ps.setString(1, rowid);
+	        ps.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	}
+	
 	public List<ExameVo> findAllExames(){
 		StringBuilder query = new StringBuilder("SELECT rowid id, nm_exame nome FROM exame");
 		try(

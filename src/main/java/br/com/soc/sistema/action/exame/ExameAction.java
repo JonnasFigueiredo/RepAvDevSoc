@@ -49,6 +49,19 @@ public class ExameAction extends Action {
 		return INPUT;
 	}
 	
+	public String excluir() {
+	    if (exameVo.getRowid() == null) {
+	        return REDIRECT;
+	    }
+
+	    // Chama a camada de negócios para excluir o exame
+	    business.excluirExame(exameVo.getRowid());
+
+	    // Redireciona para a página de listagem de exames após a exclusão
+	    return REDIRECT;
+	}
+
+	
 	public List<OpcoesComboBuscarExames> getListaOpcoesCombo(){
 		return Arrays.asList(OpcoesComboBuscarExames.values());
 	}

@@ -1,5 +1,6 @@
 package br.com.soc.sistema.business;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,15 @@ public class ExameBusiness {
 		}
 		
 	}	
+	
+	public void excluirExame(String rowid) {
+		try {
+		ExameDao exameDao = new ExameDao();
+		exameDao.excluirExame(rowid);
+	}
+		catch (Exception e) {
+			throw new BusinessException("Impossível excluir exame");}
+		}
 	
 	public List<ExameVo> filtrarExames(ExameFilter filter){
 		List<ExameVo> exames = new ArrayList<>();
