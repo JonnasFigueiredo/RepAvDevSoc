@@ -26,10 +26,30 @@ public class ExameDao extends Dao {
 			e.printStackTrace();
 		}
 	}
+	public void editarExame(ExameVo exameVo){
+		StringBuilder query = new StringBuilder("UPDATE exame SET nm_exame = ? WHERE rowid = ?");
+		try(
+			Connection con = getConexao();
+			PreparedStatement  ps = con.prepareStatement(query.toString())){
+			
+			int i = 1;
+			ps.setString(i++, exameVo.getNome());
+			ps.setInt(i, Integer.parseInt(exameVo.getRowid()));
+			
+			//ps.executeUpdate();
+			
+			if (ps.executeUpdate() == 0)
+				throw new SQLException();
+			
+		}catch (SQLException e) {
+			//e.printStackTrace();
+		}
+	}
 	
 	public void excluirExame(String rowid) {
 	    String query = "DELETE FROM exame WHERE rowid = ?";
-	    try (Connection con = getConexao();
+	    try ( 
+	    	 Connection con = getConexao();
 	         PreparedStatement ps = con.prepareStatement(query)) {
 	        
 	        ps.setString(1, rowid);

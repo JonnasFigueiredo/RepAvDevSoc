@@ -10,6 +10,7 @@ import br.com.soc.sistema.infra.Action;
 import br.com.soc.sistema.infra.OpcoesComboBuscarExames;
 import br.com.soc.sistema.vo.ExameVo;
 
+
 public class ExameAction extends Action {
 	private List<ExameVo> exames = new ArrayList<>();
 	private ExameBusiness business = new ExameBusiness();
@@ -41,13 +42,14 @@ public class ExameAction extends Action {
 	}
 	
 	public String editar() {
-		if(exameVo.getRowid() == null)
-			return REDIRECT;
-		
-		exameVo = business.buscarExamePor(exameVo.getRowid());
-		
-		return INPUT;
+		if (exameVo.getNome() == null)
+			return EDIT;
+
+		business.editarExame(exameVo);
+
+		return REDIRECT;
 	}
+
 	
 	public String excluir() {
 	    if (exameVo.getRowid() == null) {

@@ -33,6 +33,18 @@ public class ExameBusiness {
 		}
 		
 	}	
+	public void editarExame(ExameVo exameVo) {
+		try {
+			if (exameVo.getNome().isEmpty())
+				throw new IllegalArgumentException("Nome nao pode ser em branco");
+
+			dao.editarExame(exameVo);
+			
+		} catch (Exception e) {
+			throw new BusinessException("Nao foi possivel realizar a edicao do registro");
+		}
+	}
+
 	
 	public void excluirExame(String rowid) {
 		try {
