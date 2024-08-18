@@ -46,7 +46,7 @@
 
 						<div class="col-sm-5">
 							<s:textfield cssClass="form-control" id="nome"
-								name="exameVo.nome" />
+								name="exameVo.nome" placeholder="Digite o nome (obrigatório)" />
 						</div>
 					</div>
 				</div>
