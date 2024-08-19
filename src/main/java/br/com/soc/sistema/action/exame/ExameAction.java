@@ -33,22 +33,28 @@ public class ExameAction extends Action {
 	}
 	
 	public String novo() {
-		if(exameVo.getNome() == null)
-			return INPUT;
-		
-		business.salvarExame(exameVo);
-		
-		return REDIRECT;
+	    if (exameVo.getNome() == null || exameVo.getNome().trim().isEmpty()) {
+	        addFieldError("exameVo.nome", "O nome do exame é obrigatório.");
+	        return INPUT;
+	    }
+	    business.salvarExame(exameVo);
+	    return REDIRECT;
 	}
 	
 	public String editar() {
-		if (exameVo.getNome() == null)
-			return EDIT;
+	    // Verifica se o campo 'nome' no objeto exameVo é nulo
+		 if (exameVo.getNome() == null || exameVo.getNome().trim().isEmpty()) {
+		        addFieldError("exameVo.nome", "O nome do exame é obrigatório.");
+	        return EDIT;
+	    }
 
-		business.editarExame(exameVo);
+	    // Se o nome não for nulo, chama o método de negócio para editar o exame
+	    business.editarExame(exameVo);
 
-		return REDIRECT;
+	    // Após a edição, redireciona o usuário para outra página (indicado pela constante REDIRECT)
+	    return REDIRECT;
 	}
+
 
 	
 	public String excluir() {
