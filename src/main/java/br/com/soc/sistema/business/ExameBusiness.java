@@ -13,74 +13,83 @@ public class ExameBusiness {
 
 	private static final String FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO = "Foi informado um caracter no lugar de um numero";
 	private ExameDao dao;
-	
+
 	public ExameBusiness() {
 		this.dao = new ExameDao();
 	}
-	
-	public List<ExameVo> trazerTodosOsExames(){
+
+	public List<ExameVo> trazerTodosOsExames() {
 		return dao.findAllExames();
-	}	
-	
+	}
+
 	public void salvarExame(ExameVo exameVo) {
 		try {
-			if(exameVo.getNome().isEmpty())
-				throw new IllegalArgumentException("Nome nao pode ser em branco");
-			
+			// Verifica se o nome está vazio
+			if (exameVo.getNome() == null || exameVo.getNome().isEmpty()) {
+				throw new IllegalArgumentException("Nome não pode ser em branco");
+			}
+
+			// Verifica se o nome contém caracteres especiais
+			if (!exameVo.getNome().matches("[a-zA-Z0-9 ]*")) {
+				throw new IllegalArgumentException("Nome não pode conter caracteres especiais");
+			}
+
+			// Inserir exame no banco de dados
 			dao.insertExame(exameVo);
-		} catch (Exception e) {
-			throw new BusinessException("Nao foi possivel realizar a inclusao do registro");
+
+		} catch (IllegalArgumentException e) {
+			throw new BusinessException("Erro de validação: " + e.getMessage());
 		}
-		
-	}	
+
+	}
+
 	public void editarExame(ExameVo exameVo) {
 		try {
 			if (exameVo.getNome().isEmpty())
 				throw new IllegalArgumentException("Nome nao pode ser em branco");
 
 			dao.editarExame(exameVo);
-			
+
 		} catch (Exception e) {
 			throw new BusinessException("Nao foi possivel realizar a edicao do registro");
 		}
 	}
 
-	
 	public void excluirExame(String rowid) {
 		try {
-		ExameDao exameDao = new ExameDao();
-		exameDao.excluirExame(rowid);
-	}
-		catch (Exception e) {
-			throw new BusinessException("Impossível excluir exame");}
+			ExameDao exameDao = new ExameDao();
+			exameDao.excluirExame(rowid);
+		} catch (Exception e) {
+			throw new BusinessException("Impossível excluir exame");
 		}
-	
-	public List<ExameVo> filtrarExames(ExameFilter filter){
+	}
+
+	public List<ExameVo> filtrarExames(ExameFilter filter) {
 		List<ExameVo> exames = new ArrayList<>();
-		
+
 		switch (filter.getOpcoesCombo()) {
-			case ID:
-				try {
-					Integer codigo = Integer.parseInt(filter.getValorBusca());
-					exames.add(dao.findByCodigo(codigo));
-				}catch (NumberFormatException e) {
-					throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
-				}
+		case ID:
+			try {
+				Integer codigo = Integer.parseInt(filter.getValorBusca());
+				exames.add(dao.findByCodigo(codigo));
+			} catch (NumberFormatException e) {
+				throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
+			}
 			break;
 
-			case NOME:
-				exames.addAll(dao.findAllByNome(filter.getValorBusca()));
+		case NOME:
+			exames.addAll(dao.findAllByNome(filter.getValorBusca()));
 			break;
 		}
-		
+
 		return exames;
 	}
-	
+
 	public ExameVo buscarExamePor(String codigo) {
 		try {
 			Integer cod = Integer.parseInt(codigo);
 			return dao.findByCodigo(cod);
-		}catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			throw new BusinessException(FOI_INFORMADO_CARACTER_NO_LUGAR_DE_UM_NUMERO);
 		}
 	}

@@ -46,7 +46,7 @@
 <body style="background-color: #128b6e;">
 
 	<div class="container">
-		<s:form action="/novoExames.action">
+		<s:form action="/salvarExames.action">
 			<div class="card mt-5">
 				<div class="card-header">
 					<div class="row">
@@ -78,8 +78,10 @@
 					<div class="row align-items-center mt-3">
 						<label for="nome" class="col-sm-1 col-form-label text-center">Nome:</label>
 						<div class="col-sm-5">
-							<s:textfield cssClass="form-control" id="nome"
-								name="exameVo.nome" placeholder="Digite o nome (obrigatório)" />
+						
+							<input class="form-control" id="nome" name="exameVo.nome"
+								placeholder="Digite o nome (obrigatório)" required/>
+							                                <%--required--%>
 						</div>
 					</div>
 				</div>
@@ -94,8 +96,42 @@
 				</div>
 			</div>
 		</s:form>
-	</div>
+		
+	</div>  
+	
+	<!-- Modal de Erro -->
+	
+	<s:if test="erro != null && erro.trim().length() > 0">
+        <script>
+            // Script para abrir o modal automaticamente quando a página carregar
+            document.addEventListener('DOMContentLoaded', function () {
+                var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
+            });
+        </script>
 
+        <!-- Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="errorModalLabel">Erro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <s:property value="erro"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </s:if>
+
+    <!-- Bootstrap JS (sem jQuery necessário) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 	<script src="webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+	
 </body>
 </html>
