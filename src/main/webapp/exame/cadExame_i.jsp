@@ -80,7 +80,7 @@
 						<div class="col-sm-5">
 						
 							<input class="form-control" id="nome" name="exameVo.nome"
-								placeholder="Digite o nome (obrigatório)" required/>
+								placeholder="Digite o nome (obrigatório)"/>
 							                                <%--required--%>
 						</div>
 					</div>
@@ -101,7 +101,8 @@
 	
 	<!-- Modal de Erro -->
 	
-	<s:if test="erro != null && erro.trim().length() > 0">
+	<s:if 
+	     test="erro != null && erro.trim().length() > 0">
         <script>
             // Script para abrir o modal automaticamente quando a página carregar
             document.addEventListener('DOMContentLoaded', function () {

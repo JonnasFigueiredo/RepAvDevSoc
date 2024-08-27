@@ -48,12 +48,13 @@ public class ExameAction extends Action {
 	}
 
 	public String editar() {
-		if (exameVo.getNome() == null || exameVo.getNome().trim().isEmpty()) {
-			return EDIT;
-		}
-		business.editarExame(exameVo);
-
-		return REDIRECT;
+	    try {
+	        business.editarExame(exameVo);
+	        return REDIRECT;
+	    } catch (BusinessException e) {
+                erro = e.getMessage();
+	        return EDIT;
+	    }
 	}
 
 	public String excluir() {

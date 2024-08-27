@@ -29,12 +29,10 @@ public class ExameBusiness {
 				throw new IllegalArgumentException("Nome não pode ser em branco");
 			}
 
-			// Verifica se o nome contém caracteres especiais
 			if (!exameVo.getNome().matches("[a-zA-Z0-9 ]*")) {
 				throw new IllegalArgumentException("Nome não pode conter caracteres especiais");
 			}
 
-			// Inserir exame no banco de dados
 			dao.insertExame(exameVo);
 
 		} catch (IllegalArgumentException e) {
@@ -45,14 +43,19 @@ public class ExameBusiness {
 
 	public void editarExame(ExameVo exameVo) {
 		try {
-			if (exameVo.getNome().isEmpty())
-				throw new IllegalArgumentException("Nome nao pode ser em branco");
+			// Verifica se o nome está vazio
+			if (exameVo.getNome() == null || exameVo.getNome().isEmpty()) {
+				throw new IllegalArgumentException("Nome não pode ser em branco");
+			}
 
+			if (!exameVo.getNome().matches("[a-zA-Z0-9 ]*")) {
+				throw new IllegalArgumentException("Nome não pode conter caracteres especiais");
+			}
 			dao.editarExame(exameVo);
-
-		} catch (Exception e) {
-			throw new BusinessException("Nao foi possivel realizar a edicao do registro");
+		} catch (IllegalArgumentException e) {
+			throw new BusinessException("Erro de validação: " + e.getMessage());
 		}
+
 	}
 
 	public void excluirExame(String rowid) {
