@@ -37,6 +37,10 @@ public class ExameAction extends Action {
 			return INPUT;
 	}
 	
+	public String alterar() {
+		return EDIT;
+}
+	
 	public String salvar() {
 	    try {
 	        business.salvarExame(exameVo);

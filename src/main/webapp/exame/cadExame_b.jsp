@@ -52,10 +52,10 @@
                         <tr>
                             <td>${rowid}</td>
                             <td>${nome}</td>
-                            <td class="text-end"><s:url action="editarExames"
-                                    var="editar">
+                            <td class="text-end"><s:url action="alterarExames"
+                                    var="alterar">
                                     <s:param name="exameVo.rowid" value="rowid"></s:param>
-                                </s:url> <a href="${editar}" class="btn btn-warning text-white"> <s:text
+                                </s:url> <a href="${alterar}" class="btn btn-warning text-white"> <s:text
                                         name="label.editar" />
                             </a> <s:url action="excluirExame" var="excluir">
                                     <s:param name="exameVo.rowid" value="rowid"></s:param>
