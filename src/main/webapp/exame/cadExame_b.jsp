@@ -2,8 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
-<%-- Pagina inicial Exames--%>
 <html>
+<%-- PAGINA INICIAL EXAMES--%>
 <head>
 <meta charset="ISO-8859-1">
 <title><s:text name="label.titulo.pagina.consulta" /></title>

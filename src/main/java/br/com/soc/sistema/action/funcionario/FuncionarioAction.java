@@ -29,11 +29,11 @@ public class FuncionarioAction extends Action {
 	}
 
 	/* Action para inclusão de funcionário */
-	public String novoFuncionario() {
+	public String novo() {
 
 		return INPUT;
 	}
-	public String salvarFuncionario() {
+	public String salvar() {
 
 		business.inserirFuncionario(funcionarioVo);
 
