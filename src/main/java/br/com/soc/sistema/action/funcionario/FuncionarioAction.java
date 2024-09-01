@@ -10,7 +10,6 @@ import br.com.soc.sistema.infra.Action;
 import br.com.soc.sistema.infra.OpcoesComboBuscarFuncionarios;
 import br.com.soc.sistema.vo.FuncionarioVo;
 
-@SuppressWarnings("serial")
 public class FuncionarioAction extends Action {
 	private List<FuncionarioVo> funcionarios = new ArrayList<>();
 	private FuncionarioBusiness business = new FuncionarioBusiness();
@@ -20,7 +19,6 @@ public class FuncionarioAction extends Action {
 	/* Action para listagem dos funcionários cadastrados */
 	public String todos() {
 		funcionarios.addAll(business.trazerTodosOsFuncionarios());
-		
 		return SUCCESS;
 	}
 
@@ -31,13 +29,16 @@ public class FuncionarioAction extends Action {
 	}
 
 	/* Action para inclusão de funcionário */
-	public String novo() {
+	public String novoFuncionario() {
+
+		return INPUT;
+	}
+	public String salvarFuncionario() {
 
 		business.inserirFuncionario(funcionarioVo);
 
 		return REDIRECT;
 	}
-
 	/* Action para edição de funcionário */
 	public String editar() {
 
