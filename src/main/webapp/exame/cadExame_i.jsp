@@ -80,8 +80,8 @@
 						<div class="col-sm-5">
 						
 							<input class="form-control" id="nome" name="exameVo.nome"
-								placeholder="Digite o nome (obrigatório)"/>
-							                                <%--required--%>
+								placeholder="Digite o nome (obrigatório)" required />
+							                                <%--required="true/false"--%>
 						</div>
 					</div>
 				</div>

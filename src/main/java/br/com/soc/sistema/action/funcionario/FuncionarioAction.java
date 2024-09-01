@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.soc.sistema.business.FuncionarioBusiness;
+import br.com.soc.sistema.exception.BusinessException;
 import br.com.soc.sistema.filter.FuncionarioFilter;
 import br.com.soc.sistema.infra.Action;
 import br.com.soc.sistema.infra.OpcoesComboBuscarFuncionarios;
@@ -15,6 +16,7 @@ public class FuncionarioAction extends Action {
 	private FuncionarioBusiness business = new FuncionarioBusiness();
 	private FuncionarioFilter filtrar = new FuncionarioFilter();
 	private FuncionarioVo funcionarioVo = new FuncionarioVo();;
+	private String erro;
 
 	/* Action para listagem dos funcionários cadastrados */
 	public String todos() {
@@ -33,18 +35,28 @@ public class FuncionarioAction extends Action {
 
 		return INPUT;
 	}
+
 	public String salvar() {
 
 		business.inserirFuncionario(funcionarioVo);
 
 		return REDIRECT;
 	}
-	/* Action para edição de funcionário */
-	public String editar() {
 
-		return SUCCESS;
+	/* Action para edição de funcionário */
+	public String alterar() {
+		return EDIT;
 	}
 
+	public String editar() {
+	    try {
+	        business.editarFuncionario(funcionarioVo);
+	        return REDIRECT;
+	    } catch (BusinessException e) {
+                setErro(e.getMessage());
+	        return EDIT;
+	    }
+	}
 	/* Action para exclusão de funcionário */
 	public String excluir() {
 
@@ -79,6 +91,14 @@ public class FuncionarioAction extends Action {
 
 	public void setFuncionarioVo(FuncionarioVo funcionarioVo) {
 		this.funcionarioVo = funcionarioVo;
+	}
+
+	public String getErro() {
+		return erro;
+	}
+
+	public void setErro(String erro) {
+		this.erro = erro;
 	}
 
 }
