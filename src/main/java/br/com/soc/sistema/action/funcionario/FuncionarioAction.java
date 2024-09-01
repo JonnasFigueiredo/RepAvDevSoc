@@ -26,6 +26,10 @@ public class FuncionarioAction extends Action {
 
 	/* Action para filtrar os funcionários */
 	public String filtrar() {
+		if (filtrar.isNullOpcoesCombo())
+			return REDIRECT;
+
+		funcionarios = business.filtrarFuncionario(filtrar);
 
 		return SUCCESS;
 	}
@@ -60,7 +64,7 @@ public class FuncionarioAction extends Action {
 	/* Action para exclusão de funcionário */
 	public String excluir() {
 
-		business.deletarFuncionario(Integer.parseInt(funcionarioVo.getRowid()));
+		business.deletarFuncionario(funcionarioVo.getRowid());
 
 		return REDIRECT;
 	}

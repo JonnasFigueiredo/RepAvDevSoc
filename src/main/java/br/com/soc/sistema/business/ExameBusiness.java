@@ -59,8 +59,7 @@ public class ExameBusiness {
 
 	public void excluirExame(String rowid) {
 		try {
-			ExameDao exameDao = new ExameDao();
-			exameDao.excluirExame(rowid);
+			dao.excluirExame(rowid);
 		} catch (Exception e) {
 			throw new BusinessException("Impossível excluir exame");
 		}
