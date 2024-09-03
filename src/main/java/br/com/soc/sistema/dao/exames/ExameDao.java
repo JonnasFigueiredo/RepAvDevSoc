@@ -35,9 +35,7 @@ public class ExameDao extends Dao {
 			int i = 1;
 			ps.setString(i++, exameVo.getNome());
 			ps.setInt(i, Integer.parseInt(exameVo.getRowid()));
-			
-			//ps.executeUpdate();
-			
+						
 			if (ps.executeUpdate() == 0)
 				throw new SQLException();
 			

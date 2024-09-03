@@ -35,7 +35,7 @@ public class ExameBusiness {
 			dao.insertExame(exameVo);
 
 		} catch (IllegalArgumentException e) {
-			throw new BusinessException("Erro de validação: " + e.getMessage());
+			throw new BusinessException("Erro ao Inserir Exame: " + e.getMessage());
 		}
 
 	}
@@ -52,7 +52,7 @@ public class ExameBusiness {
 			}
 			dao.editarExame(exameVo);
 		} catch (IllegalArgumentException e) {
-			throw new BusinessException("Erro de validação: " + e.getMessage());
+			throw new BusinessException("Erro ao Inserir Exame: " + e.getMessage());
 		}
 
 	}

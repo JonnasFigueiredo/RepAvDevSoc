@@ -41,10 +41,13 @@ public class FuncionarioAction extends Action {
 	}
 
 	public String salvar() {
-
+		  try {
 		business.inserirFuncionario(funcionarioVo);
-
 		return REDIRECT;
+		  } catch (BusinessException e) {
+              erro = e.getMessage();
+	        return INPUT;
+	    }
 	}
 
 	/* Action para edição de funcionário */
@@ -57,7 +60,7 @@ public class FuncionarioAction extends Action {
 	        business.editarFuncionario(funcionarioVo);
 	        return REDIRECT;
 	    } catch (BusinessException e) {
-                setErro(e.getMessage());
+	    	    erro = e.getMessage();
 	        return EDIT;
 	    }
 	}
