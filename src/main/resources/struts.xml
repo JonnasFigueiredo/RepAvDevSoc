@@ -37,7 +37,7 @@
 			class="br.com.soc.sistema.action.ficha.FichaAction" method="{1}">
 			<result name="success">/ficha/cadFicha_b.jsp</result>
 			<result name="input">/ficha/cadFicha_i.jsp</result>
-			<result name="edit">/ficha/cadFicha_b.jsp</result>
+			<result name="edit">/ficha/cadFicha_e.jsp</result>
 			<result name="redirect" type="redirectAction">todosFichas</result>
 		</action>
 		
