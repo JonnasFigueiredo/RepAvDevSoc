@@ -46,6 +46,19 @@
           <result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
           <result name="input">/ficha/cadFicha_i.jsp</result>
         </action>
+        
+       <action name="relatorioExamesExcel" class="br.com.soc.sistema.action.ficha.FichaAction" method="gerarRelatorioExcel">
+        <result name="success" type="stream">
+          <param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+          <param name="inputName">inputStream</param>
+          <param name="contentDisposition">attachment;filename=relatorio_exames.xlsx</param>
+          <param name="bufferSize">1024</param>
+        </result>  
+         <result name="error">/relatorio/error.jsp</result> <!-- Em caso de erro, exibir uma página de erro -->
+     </action>
+       
+        
+        
 		
     </package>
 
