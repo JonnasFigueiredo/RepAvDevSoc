@@ -5,7 +5,7 @@ INSERT INTO exame (nm_exame) VALUES ('Acuidade Visual'), ('Urina'), ('Clinico'),
 
 -- Funcionarios
 CREATE TABLE funcionario (rowid bigint auto_increment, nm_funcionario VARCHAR(255), PRIMARY KEY (rowid)); 
-INSERT INTO funcionario (nm_funcionario) VALUES ('Alfredo'), ('Celso'), ('Dilma');
+INSERT INTO funcionario (nm_funcionario) VALUES ('Alfredo'), ('Dilma'), ('Joelma'),('Godofredo');
 
 --Tabela FICHA, relacionando-se com a tabela EXAMES e a tabela FUNCIONARIO
 CREATE TABLE ficha (id_ficha bigint auto_increment, id_funcionario bigint, id_exame bigint, data_exame date,
@@ -14,9 +14,10 @@ CONSTRAINT fk_ficha_exame FOREIGN KEY (id_exame) REFERENCES exame(rowid),
 CONSTRAINT fk_ficha_funcionario FOREIGN KEY (id_funcionario) REFERENCES funcionario(rowid) ON DELETE CASCADE
 );
 
---Inserção de 7 fichas
+-- Inserção de 5 fichas
 INSERT INTO ficha (id_funcionario, id_exame, data_exame) VALUES 
-	(1, 1, '2023-03-15'), (1, 2, '2023-03-01'), (1, 3, '2023-02-27'),
- 	(2, 2, '2023-02-27'), (2, 3, '2023-03-30'), (2, 4, '2023-01-15'), (2, 3, '2023-02-07');
+	(1, 1, '2024-09-05'), (2, 2, '2024-09-10'),
+ 	(3, 3, '2024-09-18'), (4, 4, '2024-09-25');
+
+
  	
---ARRUMA ISSO CARA

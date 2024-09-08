@@ -33,7 +33,7 @@
 			<result name="redirect" type="redirectAction">todosFuncionarios</result>
 		</action>
 		
-			<action name="*Ficha*"
+		<action name="*Ficha*"
 			class="br.com.soc.sistema.action.ficha.FichaAction" method="{1}">
 			<result name="success">/ficha/cadFicha_b.jsp</result>
 			<result name="input">/ficha/cadFicha_i.jsp</result>
@@ -41,6 +41,11 @@
 			<result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
 			<result name="redirect" type="redirectAction">todosFichas</result>
 		</action>
+		
+		<action name="relatorio_ExamesRealizadosFicha" class="br.com.soc.sistema.action.ficha.FichaAction" method="relatorioRealizadosPeriodo">
+          <result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
+          <result name="input">/ficha/cadFicha_i.jsp</result>
+        </action>
 		
     </package>
 
