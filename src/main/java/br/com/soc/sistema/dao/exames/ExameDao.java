@@ -44,16 +44,13 @@ public class ExameDao extends Dao {
 		}
 	}
 	
-	public void excluirExame(String rowid) {
+	public void excluirExame(String rowid) throws SQLException {
 	    String query = "DELETE FROM exame WHERE rowid = ?";
-	    try ( 
-	    	 Connection con = getConexao();
+	    try (Connection con = getConexao();
 	         PreparedStatement ps = con.prepareStatement(query)) {
 	        
 	        ps.setString(1, rowid);
 	        ps.executeUpdate();
-	    } catch (SQLException e) {
-	        e.printStackTrace();
 	    }
 	}
 	

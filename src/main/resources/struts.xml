@@ -19,10 +19,6 @@
             <result name="edit">/exame/cadExame_e.jsp</result>
             <result name="redirect" type="redirectAction">todosExames</result>
         </action>
-
-        <action name="excluirExame" class="br.com.soc.sistema.action.exame.ExameAction" method="excluir">
-            <result name="redirect" type="redirectAction">todosExames</result>
-        </action>
         
         <action name="*Funcionario*" class="br.com.soc.sistema.action.funcionario.FuncionarioAction" method="{1}">
             <result name="success">/funcionario/cadFuncionario_b.jsp</result>

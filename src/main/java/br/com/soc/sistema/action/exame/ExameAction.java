@@ -62,8 +62,14 @@ public class ExameAction extends Action {
 	}
 
 	public String excluir() {
-		business.excluirExame(exameVo.getRowid());
-		return REDIRECT;
+	    try {
+	        business.excluirExame(exameVo.getRowid());
+	        return REDIRECT; // Redireciona se a exclusão for bem-sucedida
+	    } catch (BusinessException e) {
+	        erro = e.getMessage(); // Captura a mensagem de erro da exceção
+	        addActionError(erro); // Adiciona a mensagem de erro para ser exibida na página
+	        return todos(); // Retorna para a página de consulta de exames
+	    }
 	}
 
 	public List<OpcoesComboBuscarExames> getListaOpcoesCombo() {
