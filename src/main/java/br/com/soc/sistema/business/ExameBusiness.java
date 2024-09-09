@@ -61,7 +61,7 @@ public class ExameBusiness {
 	    try {
 	        dao.excluirExame(rowid); // Chama o método de exclusão no DAO
 	    } catch (Exception e) {
-	        throw new BusinessException("Erro ao excluir o exame. Verifique se ele já foi realizado por um funcionário.");
+	        throw new BusinessException("Erro ao excluir o exame: Verifique se ele já foi realizado por um funcionário.");
 	    }
 	}
 
