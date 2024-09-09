@@ -18,13 +18,11 @@ public class FuncionarioAction extends Action {
 	private FuncionarioVo funcionarioVo = new FuncionarioVo();;
 	private String erro;
 
-	/* Action para listagem dos funcionários cadastrados */
 	public String todos() {
 		funcionarios.addAll(business.trazerTodosOsFuncionarios());
 		return SUCCESS;
 	}
 
-	/* Action para filtrar os funcionários */
 	public String filtrar() {
 		if (filtrar.isNullOpcoesCombo())
 			return REDIRECT;
@@ -34,7 +32,6 @@ public class FuncionarioAction extends Action {
 		return SUCCESS;
 	}
 
-	/* Action para inclusão de funcionário */
 	public String novo() {
 
 		return INPUT;
@@ -50,7 +47,6 @@ public class FuncionarioAction extends Action {
 	    }
 	}
 
-	/* Action para edição de funcionário */
 	public String alterar() {
 		return EDIT;
 	}
@@ -64,7 +60,6 @@ public class FuncionarioAction extends Action {
 	        return EDIT;
 	    }
 	}
-	/* Action para exclusão de funcionário */
 	public String excluir() {
 
 		business.deletarFuncionario(funcionarioVo.getRowid());
