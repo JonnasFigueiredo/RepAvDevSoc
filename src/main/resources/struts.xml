@@ -25,41 +25,40 @@
             <result name="redirect" type="redirectAction">todosExames</result>
         </action>
         
-       <action name="*Funcionario*"
-			class="br.com.soc.sistema.action.funcionario.FuncionarioAction" method="{1}">
-			<result name="success">/funcionario/cadFuncionario_b.jsp</result>
-			<result name="input">/funcionario/cadFuncionario_i.jsp</result>
-			<result name="edit">/funcionario/cadFuncionario_e.jsp</result>
-			<result name="redirect" type="redirectAction">todosFuncionarios</result>
-		</action>
-		
-		<action name="*Ficha*"
-			class="br.com.soc.sistema.action.ficha.FichaAction" method="{1}">
-			<result name="success">/ficha/cadFicha_b.jsp</result>
-			<result name="input">/ficha/cadFicha_i.jsp</result>
-			<result name="edit">/ficha/cadFicha_e.jsp</result>
-			<result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
-			<result name="redirect" type="redirectAction">todosFichas</result>
-		</action>
-		
-		<action name="relatorio_ExamesRealizadosFicha" class="br.com.soc.sistema.action.ficha.FichaAction" method="relatorioRealizadosPeriodo">
-          <result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
-          <result name="input">/ficha/cadFicha_i.jsp</result>
+        <!-- Mapeamento para ações de funcionários -->
+        <action name="*Funcionario*" class="br.com.soc.sistema.action.funcionario.FuncionarioAction" method="{1}">
+            <result name="success">/funcionario/cadFuncionario_b.jsp</result>
+            <result name="input">/funcionario/cadFuncionario_i.jsp</result>
+            <result name="edit">/funcionario/cadFuncionario_e.jsp</result>
+            <result name="redirect" type="redirectAction">todosFuncionarios</result>
         </action>
-        
-       <action name="relatorioExamesExcel" class="br.com.soc.sistema.action.ficha.FichaAction" method="gerarRelatorioExcel">
-        <result name="success" type="stream">
-          <param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
-          <param name="inputName">inputStream</param>
-          <param name="contentDisposition">attachment;filename=relatorio_exames.xlsx</param>
-          <param name="bufferSize">1024</param>
-        </result>  
-         <result name="error">/relatorio/error.jsp</result> <!-- Em caso de erro, exibir uma página de erro -->
-     </action>
-       
-        
-        
-		
+
+        <!-- Mapeamento para ações de fichas -->
+        <action name="*Ficha*" class="br.com.soc.sistema.action.ficha.FichaAction" method="{1}">
+            <result name="success">/ficha/cadFicha_b.jsp</result>
+            <result name="input">/ficha/cadFicha_i.jsp</result>
+            <result name="edit">/ficha/cadFicha_e.jsp</result>
+            <result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
+            <result name="redirect" type="redirectAction">todosFichas</result>
+        </action>
+
+        <!-- Ação específica para Relatório em HTML -->
+        <action name="relatorio_ExamesRealizadosFicha" class="br.com.soc.sistema.action.ficha.FichaAction" method="relatorioRealizadosPeriodo">
+            <result name="report_examesrealizados">/relatorio/relatorio_examesrealizados.jsp</result>
+            <result name="input">/ficha/cadFicha_i.jsp</result>
+        </action>
+
+        <!-- Ação específica para Relatório em Excel -->
+        <action name="relatorioExamesExcel" class="br.com.soc.sistema.action.ficha.FichaAction" method="gerarRelatorioExcel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename=relatorio_exames.xlsx</param>
+                <param name="bufferSize">1024</param>
+            </result>
+            <result name="error">/relatorio/error.jsp</result>
+        </action>
+
     </package>
 
 </struts>
