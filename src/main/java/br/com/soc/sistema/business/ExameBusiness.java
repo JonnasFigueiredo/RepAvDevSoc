@@ -23,7 +23,7 @@ public class ExameBusiness {
 
 	public void salvarExame(ExameVo exameVo) {
 		try {
-			// Verifica se o nome está vazio
+
 			if (exameVo.getNome() == null || exameVo.getNome().isEmpty()) {
 				throw new IllegalArgumentException("Nome não pode ser em branco");
 			}
@@ -42,7 +42,7 @@ public class ExameBusiness {
 
 	public void editarExame(ExameVo exameVo) {
 		try {
-			// Verifica se o nome está vazio
+
 			if (exameVo.getNome() == null || exameVo.getNome().isEmpty()) {
 				throw new IllegalArgumentException("Nome não pode ser em branco");
 			}
@@ -58,11 +58,11 @@ public class ExameBusiness {
 	}
 
 	public void excluirExame(String rowid) throws BusinessException {
-	    try {
-	        dao.excluirExame(rowid); // Chama o método de exclusão no DAO
-	    } catch (Exception e) {
-	        throw new BusinessException("Erro ao excluir o exame: Verifique se ele já foi realizado por um funcionário.");
-	    }
+		try {
+			dao.excluirExame(rowid);
+		} catch (Exception e) {
+			throw new BusinessException("Erro ao excluir: exame foi realizado por um funcionário");
+		}
 	}
 
 	public List<ExameVo> filtrarExames(ExameFilter filter) {

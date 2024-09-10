@@ -64,11 +64,11 @@ public class ExameAction extends Action {
 	public String excluir() {
 	    try {
 	        business.excluirExame(exameVo.getRowid());
-	        return REDIRECT; // Redireciona se a exclusão for bem-sucedida
+	        return REDIRECT;
 	    } catch (BusinessException e) {
-	        erro = e.getMessage(); // Captura a mensagem de erro da exceção
-	        addActionError(erro); // Adiciona a mensagem de erro para ser exibida na página
-	        return todos(); // Retorna para a página de consulta de exames
+	        erro = e.getMessage(); 
+	        addActionError(erro); 
+	        return todos(); 
 	    }
 	}
 
