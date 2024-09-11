@@ -1,5 +1,6 @@
 package br.com.soc.sistema.business;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,8 +61,10 @@ public class ExameBusiness {
 	public void excluirExame(String rowid) throws BusinessException {
 		try {
 			dao.excluirExame(rowid);
-		} catch (Exception e) {
+		} catch (SQLIntegrityConstraintViolationException sqlexception) {
 			throw new BusinessException("Erro ao excluir: exame foi realizado por um funcionário");
+		} catch (Exception e) {
+			throw new BusinessException("Nao foi possivel realizar a exclusão do Exame");
 		}
 	}
 

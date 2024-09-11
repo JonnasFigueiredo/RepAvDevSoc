@@ -38,28 +38,33 @@ public class FuncionarioAction extends Action {
 	}
 
 	public String salvar() {
-		  try {
-		business.inserirFuncionario(funcionarioVo);
-		return REDIRECT;
-		  } catch (BusinessException e) {
-              erro = e.getMessage();
-	        return INPUT;
-	    }
+		try {
+			business.inserirFuncionario(funcionarioVo);
+			return REDIRECT;
+		} catch (BusinessException e) {
+			erro = e.getMessage();
+			return INPUT;
+		}
 	}
 
 	public String alterar() {
+
+		funcionarioVo = business.findByRowid(funcionarioVo.getRowid());
+
 		return EDIT;
+
 	}
 
 	public String editar() {
-	    try {
-	        business.editarFuncionario(funcionarioVo);
-	        return REDIRECT;
-	    } catch (BusinessException e) {
-	    	    erro = e.getMessage();
-	        return EDIT;
-	    }
+		try {
+			business.editarFuncionario(funcionarioVo);
+			return REDIRECT;
+		} catch (BusinessException e) {
+			erro = e.getMessage();
+			return EDIT;
+		}
 	}
+
 	public String excluir() {
 
 		business.deletarFuncionario(funcionarioVo.getRowid());

@@ -38,6 +38,7 @@ public class ExameAction extends Action {
 	}
 	
 	public String alterar() {
+		exameVo = business.buscarExamePor(exameVo.getRowid());
 		return EDIT;
 }
 	

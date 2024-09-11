@@ -75,7 +75,7 @@
                         </label>
                         <div class="col-sm-5">
 
-                            <input class="form-control" id="nome" name="exameVo.nome"
+                            <input class="form-control" id="nome" value="${exameVo.nome}" name="exameVo.nome"
                                 placeholder="Digite o nome (obrigatório)" required />
 
                         </div>
