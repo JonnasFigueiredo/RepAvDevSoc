@@ -12,7 +12,6 @@
 </head>
 <body style="background-color: #128b6e;">
 
-	<!-- Navbar para navegação entre as páginas -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Sistema de Gestão</a>
